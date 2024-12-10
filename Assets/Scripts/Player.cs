@@ -37,9 +37,10 @@ namespace SpaceShooter
                 LevelSequenceController.Instance.FinishCurrentLevel(false);
         }
 
-         internal void TakeDamage(int m_damage)
+        internal void TakeDamage(int m_damage)
         {
             m_NumLives -= m_damage;
+
             if(m_NumLives <= 0)
             {
                 LevelSequenceController.Instance.FinishCurrentLevel(false);
