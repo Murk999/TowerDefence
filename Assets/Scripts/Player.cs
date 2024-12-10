@@ -21,7 +21,10 @@ namespace SpaceShooter
 
         private void Start()
         {
-            m_Ship.EventOnDeath.AddListener(OnShipDeath);
+            if (m_Ship)
+            {
+                m_Ship.EventOnDeath.AddListener(OnShipDeath);
+            }
         }
 
         private void OnShipDeath()
@@ -32,6 +35,15 @@ namespace SpaceShooter
                 Respawn();
             else
                 LevelSequenceController.Instance.FinishCurrentLevel(false);
+        }
+
+         internal void TakeDamage(int m_damage)
+        {
+            m_NumLives -= m_damage;
+            if(m_NumLives <= 0)
+            {
+                LevelSequenceController.Instance.FinishCurrentLevel(false);
+            }
         }
 
         private void Respawn()

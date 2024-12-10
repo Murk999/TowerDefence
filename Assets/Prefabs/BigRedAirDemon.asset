@@ -18,3 +18,4 @@ MonoBehaviour:
   moveSpeed: 2
   hp: 50
   radius: 0.45
+  damage: 2
