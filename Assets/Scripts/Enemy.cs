@@ -25,13 +25,12 @@ namespace TowerDefense
 
         public void DamagePlayer()
         {
-            print($"Player takes {m_damage}");
-            Player.Instance.TakeDamage(m_damage);
+            TDPlayer.Instance.ReduceLife(m_damage);
         }
 
         public void GivePlayerGold()
         {
-            (Player.Instance as TDPlayer).ChangeGold(m_gold); // говорим игроку достань скрипт плейер и представь его в виде
+            TDPlayer.Instance.ChangeGold(m_gold); // говорим игроку достань скрипт плейер и представь его в виде
                                                               // тдѕлейер и назначь ему золото
         }
     }
