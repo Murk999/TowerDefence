@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a34af82e2f62cc744830f47f45c8e840, type: 3}
-  m_Name: New Turret Properties
+  m_Name: Magec projectaile
   m_EditorClassIdentifier: 
   m_Mode: 0
   m_ProjectilePrefab: {fileID: 1405578454133187748, guid: 13a363cc6143c7b4596c9491001e6cbf, type: 3}

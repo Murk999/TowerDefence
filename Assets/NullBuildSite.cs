@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
-public class NullBuildSite : BuildSite
+namespace TowerDefense
 {
-    public override void OnPointerDown(PointerEventData eventData)
+    public class NullBuildSite : BuildSite
     {
-        InvokeNullEvent();
+        public override void OnPointerDown(PointerEventData eventData)
+        {
+            HideControls();
+        }
     }
 }

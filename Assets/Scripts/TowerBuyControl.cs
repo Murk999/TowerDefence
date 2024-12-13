@@ -13,7 +13,10 @@ namespace TowerDefense
         [SerializeField] private Button m_button;
         [SerializeField] private Transform buildSite;
 
-        public Transform BuidSite { set { buildSite = value; } }
+        public void SetBuildSite(Transform value)
+        { 
+            buildSite = value; 
+        }
 
         private void Start()
         {
@@ -36,6 +39,7 @@ namespace TowerDefense
         public void Buy() 
         {
             TDPlayer.Instance.TryBuild(m_ta, buildSite);
+            BuildSite.HideControls();
         }
     }
 }
