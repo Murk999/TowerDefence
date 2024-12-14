@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SpaceShooter;
+using UnityEngine;
 
 namespace TowerDefense
 {
@@ -8,5 +9,6 @@ namespace TowerDefense
         public int goldCost = 15; // изначальная цена в монетах 
         public Sprite sprite; // спрайт самой башни
         public Sprite GUISprite; // выбор спрайта интерфейса 
+        public TurretProperties TurretProperties;
     }
 }

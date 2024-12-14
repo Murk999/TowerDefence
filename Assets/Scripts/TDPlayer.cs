@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SpaceShooter;
 using System;
-using UnityEngine.U2D;
+
 
 namespace TowerDefense
 {
@@ -52,6 +50,7 @@ namespace TowerDefense
             ChangeGold(-towerAsset.goldCost);
             var tower = Instantiate(m_towerPrefab, buildSite.position, Quaternion.identity); // создаем башню передаем ей параметр префаб позиция и поворот
             tower.GetComponentInChildren<SpriteRenderer>().sprite = towerAsset.sprite; // ищем компонент спрайт рендерер и меняем ему на заданный спрайт 
+            tower.GetComponentInChildren<Turret>().m_TurretProperties = towerAsset.TurretProperties;
             Destroy(buildSite.gameObject);
         }
     }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Magec projectaile
   m_EditorClassIdentifier: 
   m_Mode: 0
-  m_ProjectilePrefab: {fileID: 1405578454133187748, guid: 13a363cc6143c7b4596c9491001e6cbf, type: 3}
+  m_ProjectilePrefab: {fileID: 1405578454133187748, guid: 6e10c7651e2f9cc488ffee098b48dda5, type: 3}
   m_RateOfFire: 0.5
   m_EnergyUsage: 0
   m_AmmoUsage: 0

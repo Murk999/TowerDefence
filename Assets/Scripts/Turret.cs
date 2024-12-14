@@ -19,7 +19,7 @@ namespace SpaceShooter
         /// <summary>
         /// Текущие патроны в турели.
         /// </summary>
-        [SerializeField] private TurretProperties m_TurretProperties;
+        [SerializeField] public TurretProperties m_TurretProperties;
 
         /// <summary>
         /// Таймер повторного выстрела.
@@ -99,8 +99,9 @@ namespace SpaceShooter
             if (m_Mode != props.Mode)
                 return;
 
-            m_TurretProperties = props;
+            
             m_RefireTimer = 0;
+            m_TurretProperties = props;
         }
 
 

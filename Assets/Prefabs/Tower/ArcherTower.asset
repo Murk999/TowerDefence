@@ -15,3 +15,4 @@ MonoBehaviour:
   goldCost: 15
   sprite: {fileID: 21300000, guid: 0d1dc428e29b59d4da665429794be749, type: 3}
   GUISprite: {fileID: 21300000, guid: ef25b92a8e4b2644b8420de820e6c11f, type: 3}
+  TurretProperties: {fileID: 11400000, guid: 9b41da63bc5427b40a5ae3657e7169be, type: 2}
