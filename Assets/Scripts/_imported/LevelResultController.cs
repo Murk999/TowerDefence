@@ -25,12 +25,13 @@ namespace SpaceShooter
         /// <param name="result"></param>
         public void Show(bool result)
         {
+            /*
             if (result)
             {
                 UpdateCurrentLevelStats();
                 UpdateVisualStats();
             }
-
+            */
             m_PanelSuccess?.gameObject.SetActive(result);
             m_PanelFailure?.gameObject.SetActive(!result);
         }

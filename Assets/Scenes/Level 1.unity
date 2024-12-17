@@ -2509,7 +2509,7 @@ MonoBehaviour:
   m_NumLives: 5
   m_Ship: {fileID: 0}
   m_PlayerShipPrefab: {fileID: 0}
-  m_gold: 10
+  m_gold: 15
   m_towerPrefab: {fileID: 8604830860835562823, guid: ba3cd7ead8ba46445a8fe9a8a629832e, type: 3}
 --- !u!114 &2035700146
 MonoBehaviour:
