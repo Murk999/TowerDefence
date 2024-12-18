@@ -16,6 +16,8 @@ namespace TowerDefense
                 StopLevelActivity();
                 LevelResultController.Instance.Show(false);
             };
+
+            m_EventLevelCompleted.AddListener(StopLevelActivity);
         }
         /*
         јналогична€ более длинна€ запись
@@ -38,7 +40,7 @@ namespace TowerDefense
                 enemy.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             }
 
-            void DisableAll<T>() where T : MonoBehaviour // делаем эту функцию вместо кучи повтор€ющегос€ кода ниже
+            void DisableAll<T>() where T : MonoBehaviour // делаем эту функцию вместо кучи повтор€щиегос€ кода ниже
             {
                 foreach (var obj in FindObjectsOfType<T>())
                 {
