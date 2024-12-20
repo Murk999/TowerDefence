@@ -25,15 +25,17 @@ namespace TowerDefense
             m_text.text = m_ta.goldCost.ToString();
             m_button.GetComponent<Image>().sprite = m_ta.GUISprite;
         }
-
         private void GoldStatusCheck(int gold)
         {
+            // добавляем проверку на существование m_button
+            if (!m_button) return;
             if (gold > m_ta.goldCost != m_button.interactable)
             {
                 m_button.interactable = !m_button.interactable;
                 m_text.color = m_button.interactable ? Color.white : Color.red;
             }
         }
+
 
         // TODO: количество денег -предусловие этой процедуры
         public void Buy() 

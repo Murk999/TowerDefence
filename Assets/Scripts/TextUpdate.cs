@@ -29,6 +29,13 @@ namespace TowerDefense
         {
             m_text.text = money.ToString();
         }
+
+        // вызываем методы отписки при уничтожении объекта TextUpdate
+        private void OnDestroy()
+        {
+            TDPlayer.GoldUbdateUnsubsctibe(UpdateText);
+            TDPlayer.LifeUbdateUnSubsctibe(UpdateText);
+        }
     }
 }
 
