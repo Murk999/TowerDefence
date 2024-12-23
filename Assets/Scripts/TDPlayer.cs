@@ -25,7 +25,7 @@ namespace TowerDefense
         {
             OnGoldUpdate -= act;
         }
-        private static event Action<int> OnLifeUpdate;
+        public static event Action<int> OnLifeUpdate;
         public static void LifeUbdateSubsctibe(Action<int> act)
         {
             OnLifeUpdate += act;

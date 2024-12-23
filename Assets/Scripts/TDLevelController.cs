@@ -7,7 +7,7 @@ namespace TowerDefense
 {
     public class TDLevelController : LevelController
     {
-        public int levelScore => 1; 
+        private int levelScore = 3;
         private new void Start()
         {
             base.Start();
@@ -18,11 +18,25 @@ namespace TowerDefense
                 LevelResultController.Instance.Show(false);
             };
 
+            m_ReferenceTime += Time.time;
+
             m_EventLevelCompleted.AddListener(() =>
             {
                 StopLevelActivity();
+                if (m_ReferenceTime <= Time.time)
+                {
+                    levelScore -= 1;
+                }
                 MapCompletion.SaveEpisodeResult(levelScore);
             });
+
+            void LifeScoreChange(int _)  // одиночное нижнее подчеркивание используется универсально для методов которые нигде не используются 
+
+            {
+                levelScore -= 1;
+                TDPlayer.OnLifeUpdate -= LifeScoreChange;
+            }
+            TDPlayer.OnLifeUpdate += LifeScoreChange;
         }
         /*
         Аналогичная более длинная запись
