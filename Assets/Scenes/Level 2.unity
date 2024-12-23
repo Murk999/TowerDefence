@@ -938,6 +938,55 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!1 &1270529434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1270529436}
+  - component: {fileID: 1270529435}
+  m_Layer: 0
+  m_Name: Wave 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1270529435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270529434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441b51c4e7760964cbb9bf694e2e4e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groups:
+  - squads:
+    - asset: {fileID: 11400000, guid: 57be4ff6386e3a64792d665cc871f0e6, type: 2}
+      count: 3
+  prepareTime: 2
+--- !u!4 &1270529436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270529434}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1898781550}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1328673005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,11 +1344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1898781550}
-  - component: {fileID: 1898781552}
   - component: {fileID: 1898781551}
-  - component: {fileID: 1898781553}
-  - component: {fileID: 1898781554}
-  - component: {fileID: 1898781555}
   m_Layer: 0
   m_Name: EmenyCamp
   m_TagString: Untagged
@@ -1324,6 +1369,7 @@ Transform:
   - {fileID: 1651410796}
   - {fileID: 1124585447}
   - {fileID: 1402763204}
+  - {fileID: 1270529436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1898781551
@@ -1335,97 +1381,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1898781548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de94976bc2402954f91146a73623bfaa, type: 3}
+  m_Script: {fileID: 11500000, guid: ded467403d6ed524493a4eafe57c3ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Area: {fileID: 764765435}
-  m_SpawnMode: 1
-  m_NumSpawns: 3
-  m_RespawnTime: 10
   m_EmenyPrefabs: {fileID: 5358793149406670873, guid: 93066af3fa3e54149a17b3ca05e77860, type: 3}
-  m_path: {fileID: 1402763205}
-  m_EnemyAsset:
-  - {fileID: 11400000, guid: 57be4ff6386e3a64792d665cc871f0e6, type: 2}
---- !u!114 &1898781552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898781548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de94976bc2402954f91146a73623bfaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Area: {fileID: 764765435}
-  m_SpawnMode: 1
-  m_NumSpawns: 3
-  m_RespawnTime: 10
-  m_EmenyPrefabs: {fileID: 5358793149406670873, guid: 93066af3fa3e54149a17b3ca05e77860, type: 3}
-  m_path: {fileID: 1124585446}
-  m_EnemyAsset:
-  - {fileID: 11400000, guid: 38cd6f9c9b8ff674f9efb92f341d528c, type: 2}
---- !u!114 &1898781553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898781548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de94976bc2402954f91146a73623bfaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Area: {fileID: 764765435}
-  m_SpawnMode: 1
-  m_NumSpawns: 3
-  m_RespawnTime: 20
-  m_EmenyPrefabs: {fileID: 5358793149406670873, guid: 93066af3fa3e54149a17b3ca05e77860, type: 3}
-  m_path: {fileID: 1124585446}
-  m_EnemyAsset:
-  - {fileID: 11400000, guid: f65f0ae205acf6146bf8bfe416febaed, type: 2}
---- !u!114 &1898781554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898781548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de94976bc2402954f91146a73623bfaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Area: {fileID: 764765435}
-  m_SpawnMode: 1
-  m_NumSpawns: 2
-  m_RespawnTime: 30
-  m_EmenyPrefabs: {fileID: 5358793149406670873, guid: 93066af3fa3e54149a17b3ca05e77860, type: 3}
-  m_path: {fileID: 1402763205}
-  m_EnemyAsset:
-  - {fileID: 11400000, guid: bc97ece41ba92134d88ece54f2d515aa, type: 2}
---- !u!114 &1898781555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898781548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de94976bc2402954f91146a73623bfaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Area: {fileID: 764765435}
-  m_SpawnMode: 1
-  m_NumSpawns: 1
-  m_RespawnTime: 30
-  m_EmenyPrefabs: {fileID: 5358793149406670873, guid: 93066af3fa3e54149a17b3ca05e77860, type: 3}
-  m_path: {fileID: 1402763205}
-  m_EnemyAsset:
-  - {fileID: 11400000, guid: 7a5b773b07c4d4048b5af4c5d33fdf49, type: 2}
+  paths:
+  - {fileID: 1124585446}
+  - {fileID: 1402763205}
+  currentWave: {fileID: 1270529435}
 --- !u!1 &1970998383
 GameObject:
   m_ObjectHideFlags: 0
