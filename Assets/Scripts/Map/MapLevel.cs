@@ -9,6 +9,9 @@ namespace TowerDefense
         [SerializeField] private RectTransform resultPanel;
         [SerializeField] private Image[] resultImages;
 
+        public bool IsComplete { get { return 
+                    gameObject.activeSelf && resultPanel.gameObject.activeSelf; } }
+
         public void LoadLevel()
         {
             LevelSequenceController.Instance.StartEpisode(m_episode);
