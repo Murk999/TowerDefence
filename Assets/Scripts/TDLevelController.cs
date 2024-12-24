@@ -69,6 +69,7 @@ namespace TowerDefense
             DisableAll<Spawner>();
             DisableAll<Projectile>();
             DisableAll<Tower>();
+            DisableAll<NextWaveGUI>();
             /*
             foreach(var spawner in FindObjectsOfType<Spawner>())
             {
