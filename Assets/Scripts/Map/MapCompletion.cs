@@ -37,7 +37,7 @@ namespace TowerDefense
             }
         }
         [SerializeField] private EpisodeScore[] completionData;
-        [SerializeField] private int totalScore;
+        private int totalScore;
         
         public int TotalScore { get { return totalScore; } }
 
@@ -50,7 +50,7 @@ namespace TowerDefense
                 totalScore += episodeScore.score;
             }
         }
-
+        /*
         public bool TryIndex(int id, out Episode episode, out int score)
         {
             if(id >= 0 && id < completionData.Length)
@@ -62,6 +62,18 @@ namespace TowerDefense
             episode = null;
             score = 0;
             return false;
+        }
+        */
+        public int GetEpisodeScore(Episode m_episode)
+        {
+            foreach (var data in completionData) 
+            {
+                if(data.episode == m_episode)
+                {
+                    return data.score;
+                }
+            }
+            return 0;
         }
     }
 }

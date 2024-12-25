@@ -386,6 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc1c96e69ba682438d72c76cf602f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_episode: {fileID: 0}
   resultPanel: {fileID: 4581836711489181306}
   resultImages:
   - {fileID: 2694429879737473867}
