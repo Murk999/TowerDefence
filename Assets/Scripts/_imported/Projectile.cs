@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TowerDefense;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 namespace SpaceShooter
@@ -43,26 +45,7 @@ namespace SpaceShooter
             // disable queries start in collider
             if (hit)
             {
-                var destructible = hit.collider.transform.root.GetComponent<Destructible>();
-
-                if(destructible != null && destructible != m_Parent)
-                {
-                    destructible.ApplyDamage(m_Damage);
-
-                    // #Score
-                    // добавляем очки за уничтожение
-                    if(Player.Instance != null && destructible.HitPoints < 0)
-                    {
-                        // проверяем что прожектайл принадлежит кораблю игрока. 
-                        // здесь есть нюанс - если мы выстрелим прожектайл и после умрем
-                        // то новый корабль игрока будет другим, в случае если прожектайл запущенный из предыдущего шипа
-                        // добьет то очков не дадут. Можно отправить пофиксить на ДЗ. (например тупо воткнув флаг что прожектайл игрока)
-                        if(m_Parent == Player.Instance.ActiveShip)
-                        {
-                            Player.Instance.AddScore(destructible.ScoreValue);
-                        }
-                    }
-                }
+                OnHit(hit);
 
                 OnProjectileLifeEnd(hit.collider, hit.point);
             }
@@ -74,7 +57,40 @@ namespace SpaceShooter
 
             transform.position += new Vector3(step.x, step.y, 0);
         }
+            private void OnHit(RaycastHit2D hit)
+            {
+                var enemy = hit.collider.transform.root.GetComponent<Enemy>();
 
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(m_Damage);
+                }
+            }
+        /*
+        private void OnHit(RaycastHit2D hit)
+        {
+            var destructible = hit.collider.transform.root.GetComponent<Destructible>();
+
+            if (destructible != null && destructible != m_Parent)
+            {
+                destructible.ApplyDamage(m_Damage);
+
+                // #Score
+                // добавляем очки за уничтожение
+                if (Player.Instance != null && destructible.HitPoints < 0)
+                {
+                    // проверяем что прожектайл принадлежит кораблю игрока. 
+                    // здесь есть нюанс - если мы выстрелим прожектайл и после умрем
+                    // то новый корабль игрока будет другим, в случае если прожектайл запущенный из предыдущего шипа
+                    // добьет то очков не дадут. Можно отправить пофиксить на ДЗ. (например тупо воткнув флаг что прожектайл игрока)
+                    if (m_Parent == Player.Instance.ActiveShip)
+                    {
+                        Player.Instance.AddScore(destructible.ScoreValue);
+                    }
+                }
+            }
+        }
+        */
         private void OnProjectileLifeEnd(Collider2D collider, Vector2 pos)
         {
             if(m_ImpactEffectPrefab != null)
