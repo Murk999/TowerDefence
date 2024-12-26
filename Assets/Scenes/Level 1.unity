@@ -1951,6 +1951,7 @@ MonoBehaviour:
   m_PlayerShipPrefab: {fileID: 0}
   m_gold: 15
   m_towerPrefab: {fileID: 8604830860835562823, guid: ba3cd7ead8ba46445a8fe9a8a629832e, type: 3}
+  healthUpgrade: {fileID: 11400000, guid: b37bee41e1e4cee45be985ebc218ba3e, type: 2}
 --- !u!114 &2035700148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2130,10 +2131,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower
       objectReference: {fileID: 0}
-    - target: {fileID: 296658269351243311, guid: ba3cd7ead8ba46445a8fe9a8a629832e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2477364860817776519, guid: ba3cd7ead8ba46445a8fe9a8a629832e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.81
@@ -2172,10 +2169,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2477364860817776519, guid: ba3cd7ead8ba46445a8fe9a8a629832e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7627110506758439689, guid: ba3cd7ead8ba46445a8fe9a8a629832e, type: 3}
-      propertyPath: m_Mode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

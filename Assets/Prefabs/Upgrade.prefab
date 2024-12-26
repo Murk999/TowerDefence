@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8678381369088282308}
   - component: {fileID: 7202304940768926033}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 9098712172059866929}
   - component: {fileID: 7287950320313377951}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,10 +459,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ddf7a9ae914484ea2c3105a3be34da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: 11400000, guid: b37bee41e1e4cee45be985ebc218ba3e, type: 2}
+  asset: {fileID: 11400000, guid: 0736ffc586e98eb438e00a3656c66640, type: 2}
   upgradeIcon: {fileID: 4881037749244392312}
   level: {fileID: 7202304940768926033}
-  cost: {fileID: 4232993903999369555}
+  costText: {fileID: 4232993903999369555}
   buyButton: {fileID: 7287950320313377951}
 --- !u!1 &8654790819281535472
 GameObject:
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 2939804946294562609}
   - component: {fileID: 9025916876905941107}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

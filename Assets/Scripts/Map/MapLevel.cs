@@ -6,7 +6,7 @@ namespace TowerDefense
 {
     public class MapLevel : MonoBehaviour
     {
-        [SerializeField]private Episode m_episode;
+        [SerializeField] private Episode m_episode;
         [SerializeField] private RectTransform resultPanel;
         [SerializeField] private Image[] resultImages;
 
@@ -18,15 +18,16 @@ namespace TowerDefense
             LevelSequenceController.Instance.StartEpisode(m_episode);
         }
       
-        public void Initialise()
+        public int Initialise()
         {
             var score = MapCompletion.Instance.GetEpisodeScore(m_episode);
-            
+
             resultPanel.gameObject.SetActive(score > 0);
             for (int i = 0; i < score; i++)
             {
                 resultImages[i].color = Color.white;
             }
+            return score;
         }
     }
 }

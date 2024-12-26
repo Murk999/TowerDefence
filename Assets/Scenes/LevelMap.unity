@@ -427,7 +427,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DoNotDestroyOnLoad: 0
-  save: []
+  save:
+  - asset: {fileID: 11400000, guid: b37bee41e1e4cee45be985ebc218ba3e, type: 2}
+    level: 0
 --- !u!224 &424426991 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4770781319789599757, guid: 091ce5322d7966241a65f4835aa962df, type: 3}
@@ -1555,6 +1557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade
       objectReference: {fileID: 0}
+    - target: {fileID: 8073560900902700323, guid: 091ce5322d7966241a65f4835aa962df, type: 3}
+      propertyPath: asset
+      value: 
+      objectReference: {fileID: 11400000, guid: b37bee41e1e4cee45be985ebc218ba3e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

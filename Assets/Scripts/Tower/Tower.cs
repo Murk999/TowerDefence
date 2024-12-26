@@ -7,7 +7,7 @@ namespace TowerDefense
 {
     public class Tower : MonoBehaviour
     {
-        [SerializeField] private float m_Radius = 5f;
+        [SerializeField] private float m_Radius = 2.2f;
         private Turret[] turrets;
         private Destructible target = null;
 
@@ -15,6 +15,15 @@ namespace TowerDefense
         {
             turrets = GetComponentsInChildren<Turret>();
         }
+        
+        [SerializeField] private UpgradeAsset turretUpgrade;
+        private void Awake()
+        {
+            var level = Upgrades.GetUpgradeLevel(turretUpgrade);
+            m_Radius += level * 2f;
+            print(m_Radius);
+        }
+        
         private void Update()
         {
             if (target)

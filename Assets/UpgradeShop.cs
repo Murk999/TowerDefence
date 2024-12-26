@@ -11,12 +11,22 @@ namespace TowerDefense
         [SerializeField] private BuyUpgrade[] sales;
 
         private void Start()
-        {
-            money = MapCompletion.Instance.TotalScore;
-            moneyText.text = money.ToString();
+        { 
             foreach (var slot in sales)
             {
                 slot.Initialize();
+                slot.transform.Find("Button").GetComponent<Button>().onClick.AddListener(UpdateMoney);
+            }
+            UpdateMoney();
+        }
+        public void UpdateMoney()
+        {
+            money = MapCompletion.Instance.TotalScore;
+            money -= Upgrades.GetTotalCost();
+            moneyText.text = money.ToString();
+            foreach(var slot in sales)
+            {
+                slot.CheckCost(money);
             }
         }
     }

@@ -12,9 +12,8 @@ namespace TowerDefense
             var drawLevel = 0;
             var score = 1;
             while(score !=0 && drawLevel < levels.Length)
-                //&& MapCompletion.Instance.TryIndex(drawLevel, out var episode, out score)) 
             {
-                levels[drawLevel].Initialise();//episode, score);
+                score = levels[drawLevel].Initialise();
                 drawLevel += 1;
             }
             for(int i = drawLevel; i < levels.Length; i++)

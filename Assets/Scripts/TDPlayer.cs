@@ -62,6 +62,12 @@ namespace TowerDefense
             tower.GetComponentInChildren<Turret>().m_TurretProperties = towerAsset.TurretProperties;
             Destroy(buildSite.gameObject);
         }
-        
+        [SerializeField] private UpgradeAsset healthUpgrade;
+        private new void Awake()
+        {
+            base.Awake();
+            var level = Upgrades.GetUpgradeLevel(healthUpgrade);
+            TakeDamage(-level * 5);
+        }
     }
 }
