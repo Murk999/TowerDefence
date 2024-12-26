@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MageTowerUpgrade
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: ef25b92a8e4b2644b8420de820e6c11f, type: 3}
-  costByLevel: 0300000003000000
+  costByLevel: 03000000030000000400000005000000
