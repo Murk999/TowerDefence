@@ -34,9 +34,9 @@ namespace TowerDefense
 
             {
                 levelScore -= 1;
-                TDPlayer.OnLifeUpdate -= LifeScoreChange;
+                TDPlayer.Instance.OnLifeUpdate -= LifeScoreChange;
             }
-            TDPlayer.OnLifeUpdate += LifeScoreChange;
+            TDPlayer.Instance.OnLifeUpdate += LifeScoreChange;
         }
         /*
         Аналогичная более длинная запись

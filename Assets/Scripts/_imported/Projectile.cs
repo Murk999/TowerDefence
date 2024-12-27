@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TowerDefense;
-using Unity.Burst.CompilerServices;
+﻿using System;
 using UnityEngine;
-
+using UnityEditor;
+using SpaceShooter;
+using TowerDefense;
 namespace SpaceShooter
 {
     /// <summary>
@@ -11,6 +10,16 @@ namespace SpaceShooter
     /// </summary>
     public class Projectile : Entity
     {
+        public void SetFromOtherProjectile(Projectile other)
+        {
+            other.GetData(out m_Velocity, out m_Lifetime, out m_Damage, out m_ImpactEffectPrefab);
+        }
+
+        private void GetData(out float m_Velocity, out float m_Lifetime, out int m_Damage, out ImpactEffect m_ImpactEffectPrefab)
+        {
+            m_Velocity = this.m_Velocity; m_Lifetime = this.m_Lifetime; m_Damage = this.m_Damage; m_ImpactEffectPrefab = this.m_ImpactEffectPrefab;
+        }
+
         /// <summary>
         /// Линейная скорость полета снаряда.
         /// </summary>
@@ -24,7 +33,7 @@ namespace SpaceShooter
         /// <summary>
         /// Повреждения наносимые снарядом.
         /// </summary>
-        [SerializeField] private int m_Damage;
+        [SerializeField] protected int m_Damage;
 
         /// <summary>
         /// Эффект попадания от что то твердое. 
@@ -38,8 +47,8 @@ namespace SpaceShooter
             float stepLength = Time.deltaTime * m_Velocity;
             Vector2 step = transform.up * stepLength;
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up,stepLength);
-            
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, stepLength);
+
             // не забыть выключить в свойствах проекта, вкладка Physics2D иначе не заработает
             // disable queries hit triggers
             // disable queries start in collider
@@ -52,22 +61,13 @@ namespace SpaceShooter
 
             m_Timer += Time.deltaTime;
 
-            if(m_Timer > m_Lifetime)
+            if (m_Timer > m_Lifetime)
                 Destroy(gameObject);
 
             transform.position += new Vector3(step.x, step.y, 0);
         }
-            private void OnHit(RaycastHit2D hit)
-            {
-                var enemy = hit.collider.transform.root.GetComponent<Enemy>();
 
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(m_Damage);
-                }
-            }
-        /*
-        private void OnHit(RaycastHit2D hit)
+        protected virtual void OnHit(RaycastHit2D hit)
         {
             var destructible = hit.collider.transform.root.GetComponent<Destructible>();
 
@@ -90,10 +90,10 @@ namespace SpaceShooter
                 }
             }
         }
-        */
+
         private void OnProjectileLifeEnd(Collider2D collider, Vector2 pos)
         {
-            if(m_ImpactEffectPrefab != null)
+            if (m_ImpactEffectPrefab != null)
             {
                 var impact = Instantiate(m_ImpactEffectPrefab.gameObject);
                 impact.transform.position = pos;
@@ -109,12 +109,23 @@ namespace SpaceShooter
         {
             m_Parent = parent;
         }
-        /*
-        public void SetTarget(Destructible target)
-        {
-
-        }
-        */
     }
+    namespace TowerDefense
+    {
+        [CustomEditor(typeof(Projectile))]
+        public class ProjectileInspector : Editor
+        {
+            public override void OnInspectorGUI()
+            {
+                base.OnInspectorGUI();
+                if (GUILayout.Button("Create TD Projectile"))
+                {
+                    var target = this.target as Projectile;
+                    var tdProj = target.gameObject.AddComponent<TDProjectile>();
+                    tdProj.SetFromOtherProjectile(target);
+                }
+            }
+        }
+    } 
 }
 

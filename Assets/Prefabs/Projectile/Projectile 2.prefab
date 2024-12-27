@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7955100454081412662}
-  - component: {fileID: 1405578454133187748}
+  - component: {fileID: 7857284259635523372}
   m_Layer: 0
   m_Name: Projectile 2
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 8154492711605707119}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1405578454133187748
+--- !u!114 &7857284259635523372
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,11 +42,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1166916036733837685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b40bfc8da37bfd845af742c3757633f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 25508235bc2d13846944591ff6850f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Nickname: 
-  m_Velocity: 10
+  m_Velocity: 15
   m_Lifetime: 5
   m_Damage: 30
   m_ImpactEffectPrefab: {fileID: 0}

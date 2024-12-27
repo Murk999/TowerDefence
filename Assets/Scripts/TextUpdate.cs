@@ -17,10 +17,10 @@ namespace TowerDefense
             switch (sourse)
             {
                 case UpdateSourse.Gold:
-                    TDPlayer.GoldUbdateSubsctibe(UpdateText);
+                    TDPlayer.Instance.GoldUbdateSubsctibe(UpdateText);
                     break;
                 case UpdateSourse.Life: 
-                    TDPlayer.LifeUbdateSubsctibe (UpdateText);
+                    TDPlayer.Instance.LifeUbdateSubsctibe (UpdateText);
                     break;
             }
         }
@@ -29,13 +29,15 @@ namespace TowerDefense
         {
             m_text.text = money.ToString();
         }
-
+        /*
+         // добавили с ментором 
         // вызываем методы отписки при уничтожении объекта TextUpdate
         private void OnDestroy()
         {
             TDPlayer.GoldUbdateUnsubsctibe(UpdateText);
             TDPlayer.LifeUbdateUnSubsctibe(UpdateText);
         }
+        */
     }
 }
 

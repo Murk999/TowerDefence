@@ -17,6 +17,7 @@ MonoBehaviour:
   animations: {fileID: 9100000, guid: a6fe04397bf433f4fa10cff0bdf24308, type: 2}
   moveSpeed: 1
   hp: 20
+  armor: 6
   radius: 0.27
   damage: 1
   gold: 1

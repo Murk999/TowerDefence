@@ -1,6 +1,4 @@
 using SpaceShooter;
-using Unity.VisualScripting.FullSerializer.Internal;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace TowerDefense
@@ -11,11 +9,16 @@ namespace TowerDefense
         private Turret[] turrets;
         private Destructible target = null;
 
-        private void Start()
+        public void Use(TowerAsset asset)
         {
+            GetComponentInChildren<SpriteRenderer>().sprite = asset.sprite; // ищем компонент спрайт рендерер и меняем ему на заданный спрайт 
             turrets = GetComponentsInChildren<Turret>();
+            foreach (var turret in turrets)
+            {
+                turret.AssignLoadout(asset.TurretProperties);
+            }
         }
-        
+
         [SerializeField] private UpgradeAsset turretUpgrade;
         private void Awake()
         {
@@ -23,7 +26,7 @@ namespace TowerDefense
             m_Radius += level * 2f;
             print(m_Radius);
         }
-        
+
         private void Update()
         {
             if (target)

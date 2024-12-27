@@ -14,28 +14,35 @@ namespace TowerDefense
                 return Player.Instance as TDPlayer; 
             }
         }
-        private static event Action<int> OnGoldUpdate;
-        public static void GoldUbdateSubsctibe(Action<int> act)
+        private event Action<int> OnGoldUpdate;
+        public void GoldUbdateSubsctibe(Action<int> act)
         {
             OnGoldUpdate += act;
             act(Instance.m_gold);
         }
-        // добавим метод отписки для gold
+        /*
+         // добавили с ментором 
+        // добавим метод отписки для gold  
         public static void GoldUbdateUnsubsctibe(Action<int> act)
         {
             OnGoldUpdate -= act;
         }
-        public static event Action<int> OnLifeUpdate;
-        public static void LifeUbdateSubsctibe(Action<int> act)
+        */
+        public event Action<int> OnLifeUpdate;
+        public  void LifeUbdateSubsctibe(Action<int> act)
         {
             OnLifeUpdate += act;
             act(Instance.NumLives);
         }
+        /*
+          // добавили с ментором 
         // добавим метод отписки для life
         public static void LifeUbdateUnSubsctibe(Action<int> act)
         {
             OnLifeUpdate -= act;
         }
+
+        */
         [SerializeField] private int m_gold = 0;
 
         public void ChangeGold(int change)
@@ -58,8 +65,9 @@ namespace TowerDefense
         {
             ChangeGold(-towerAsset.goldCost);
             var tower = Instantiate(m_towerPrefab, buildSite.position, Quaternion.identity); // создаем башню передаем ей параметр префаб позиция и поворот
-            tower.GetComponentInChildren<SpriteRenderer>().sprite = towerAsset.sprite; // ищем компонент спрайт рендерер и меняем ему на заданный спрайт 
-            tower.GetComponentInChildren<Turret>().m_TurretProperties = towerAsset.TurretProperties;
+            tower.Use(towerAsset);
+            
+            //tower.GetComponentInChildren<Turret>().m_TurretProperties = towerAsset.TurretProperties;
             Destroy(buildSite.gameObject);
         }
         [SerializeField] private UpgradeAsset healthUpgrade;
