@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Archer projectaile
   m_EditorClassIdentifier: 
   m_Mode: 1
-  m_ProjectilePrefab: {fileID: 1405578454133187748, guid: 13a363cc6143c7b4596c9491001e6cbf, type: 3}
+  m_ProjectilePrefab: {fileID: -8723836287743277517, guid: 13a363cc6143c7b4596c9491001e6cbf, type: 3}
   m_RateOfFire: 0.5
   m_EnergyUsage: 0
   m_AmmoUsage: 0

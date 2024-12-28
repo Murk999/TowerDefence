@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: knife projectaile
   m_EditorClassIdentifier: 
   m_Mode: 0
-  m_ProjectilePrefab: {fileID: 1405578454133187748, guid: 04a9143a4a263ac43942bd06261f5e68, type: 3}
+  m_ProjectilePrefab: {fileID: 7857284259635523372, guid: 04a9143a4a263ac43942bd06261f5e68, type: 3}
   m_RateOfFire: 0.5
   m_EnergyUsage: 0
   m_AmmoUsage: 0

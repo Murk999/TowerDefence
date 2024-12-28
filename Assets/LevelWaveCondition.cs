@@ -5,14 +5,16 @@ namespace TowerDefense
 {
     public class LevelWaveCondition : MonoBehaviour, ILevelCondition
     {
-        private bool isCompleted;
+        private bool m_IsCompleted;
+
         private void Start()
         {
             FindObjectOfType<EnemyWaveManager>().OnAllWavesDead += () =>
             {
-                isCompleted = true;
+                m_IsCompleted = true;
             };
         }
-        public bool IsCompleted { get  { return isCompleted; } }
+
+        public bool IsCompleted { get  { return m_IsCompleted; } }
     }
 }

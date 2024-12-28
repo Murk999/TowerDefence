@@ -22,7 +22,7 @@ namespace TowerDefense
         [SerializeField] private PathGroup[] groups; // массив групп
 
         [SerializeField] private float prepareTime = 10f;
-
+        [SerializeField] private EnemyWave next;
         public float GetRemainingTime() { return prepareTime - Time.time; }
 
         private void Awake()
@@ -47,6 +47,7 @@ namespace TowerDefense
                 OnWaveReady?.Invoke();
             }
         }
+
         public IEnumerable<(EnemyAsset asset, int count, int pathIndex)> EnumerateSquads() // перечесление обьектов 
         {
             for (int i = 0; i < groups.Length; i++)
@@ -58,13 +59,11 @@ namespace TowerDefense
             }                                                                               // и возвращать сколько угодно 
         }
 
-        [SerializeField] private EnemyWave next;
         internal EnemyWave PrepareNext(Action spawnEnemies)
         {
             OnWaveReady -= spawnEnemies; // убираем подписку
             if(next) next.Prepare(spawnEnemies);
             return next;
         }
-        
     }
 }

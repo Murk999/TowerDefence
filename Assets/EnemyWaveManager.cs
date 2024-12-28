@@ -5,38 +5,31 @@ namespace TowerDefense
 {
     public class EnemyWaveManager : MonoBehaviour
     {
-        [SerializeField] private Enemy m_EmenyPrefabs; // ссылка на префаб врага
-        [SerializeField] private Path[] paths;
-        [SerializeField] private EnemyWave currentWave;
-        public event Action OnAllWavesDead;
+        [SerializeField] private Enemy m_EnemyPrefabs; // ссылка на префаб врага
+        [SerializeField] private Path[] m_Paths;
+        [SerializeField] private EnemyWave m_CurrentWave;
         private int activeEnemyCount = 0;
+        
+        public event Action OnAllWavesDead;
+       
         private void RecordEnemyDead()
         {
             if (--activeEnemyCount == 0)
             {
                 ForceNextWave();
-                /*
-                if (currentWave)
-                {
-                    ForceNextWave();
-                }
-                else
-                {
-                    OnAllWavesDead?.Invoke(); // проверка что ивент не пустой 
-                }*/
             }
         }
 
         private void Start()
         {
-            currentWave.Prepare(SpawnEnemies); // подготовка к выходу волны
+            m_CurrentWave.Prepare(SpawnEnemies); // подготовка к выходу волны
         }
 
         public void ForceNextWave()
         {
-            if (currentWave) // проверяем есть ли следующая волна 
+            if (m_CurrentWave) // проверяем есть ли следующая волна 
             {
-                TDPlayer.Instance.ChangeGold((int)currentWave.GetRemainingTime()); // награда за форс волны
+                TDPlayer.Instance.ChangeGold((int)m_CurrentWave.GetRemainingTime()); // награда за форс волны
                 SpawnEnemies();
             }
             else
@@ -51,16 +44,16 @@ namespace TowerDefense
         private void SpawnEnemies()
         {
             // создать врагов 
-            foreach ((EnemyAsset asset, int count, int pathIndex) in currentWave.EnumerateSquads())
+            foreach ((EnemyAsset asset, int count, int pathIndex) in m_CurrentWave.EnumerateSquads())
             {
-                if (pathIndex < paths.Length)
+                if (pathIndex < m_Paths.Length)
                 {
                     for (int i = 0; i < count; i++)
                     {
-                        var e = Instantiate(m_EmenyPrefabs, paths[pathIndex].StartArea.RandomInsideZone, Quaternion.identity);// Quaternion.identity говорим что поворот не нужен 
+                        var e = Instantiate(m_EnemyPrefabs, m_Paths[pathIndex].StartArea.RandomInsideZone, Quaternion.identity);// Quaternion.identity говорим что поворот не нужен 
                         e.OnEnd += RecordEnemyDead;
                         e.Use(asset);
-                        e.GetComponent<TDPatrolController>().SetPath(paths[pathIndex]);
+                        e.GetComponent<TDPatrolController>().SetPath(m_Paths[pathIndex]);
                         activeEnemyCount += 1;
                         
                     }
@@ -70,8 +63,7 @@ namespace TowerDefense
                     Debug.LogWarning($"Invalid pathIndex in {name}");
                 }
             }
-
-            currentWave = currentWave.PrepareNext(SpawnEnemies);
+            m_CurrentWave = m_CurrentWave.PrepareNext(SpawnEnemies);
         }
     }
 }

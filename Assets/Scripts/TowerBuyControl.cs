@@ -8,7 +8,8 @@ namespace TowerDefense
     public partial class TowerBuyControl : MonoBehaviour
     {
 
-        [SerializeField] private TowerAsset m_ta; // настройка башни
+        [SerializeField] private TowerAsset m_TowerAsset; // настройка башни
+        public void SetTowerAsset(TowerAsset asset) { m_TowerAsset = asset; }
         [SerializeField] private Text m_text; // получаем текст
         [SerializeField] private Button m_button;
         [SerializeField] private Transform buildSite;
@@ -22,14 +23,14 @@ namespace TowerDefense
         {
             TDPlayer.Instance.GoldUbdateSubsctibe(GoldStatusCheck); // проверяем есть ли у нас нужное количество монет
             
-            m_text.text = m_ta.goldCost.ToString();
-            m_button.GetComponent<Image>().sprite = m_ta.GUISprite;
+            m_text.text = m_TowerAsset.goldCost.ToString();
+            m_button.GetComponent<Image>().sprite = m_TowerAsset.GUISprite;
         }
         private void GoldStatusCheck(int gold)
         {
             // добавляем проверку на существование m_button
             if (!m_button) return;
-            if (gold > m_ta.goldCost != m_button.interactable)
+            if (gold > m_TowerAsset.goldCost != m_button.interactable)
             {
                 m_button.interactable = !m_button.interactable;
                 m_text.color = m_button.interactable ? Color.white : Color.red;
@@ -40,7 +41,7 @@ namespace TowerDefense
         // TODO: количество денег -предусловие этой процедуры
         public void Buy() 
         {
-            TDPlayer.Instance.TryBuild(m_ta, buildSite);
+            TDPlayer.Instance.TryBuild(m_TowerAsset, buildSite);
             BuildSite.HideControls();
         }
     }

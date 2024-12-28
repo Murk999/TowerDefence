@@ -1025,6 +1025,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07aa2c8c69f8d624abcaf7c6ca095f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1967674630 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8883212682418969865, guid: d9fa17295a15102438c6794af54c3a75, type: 3}
+  m_PrefabInstance: {fileID: 3633524206924082754}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1989487840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,10 +1297,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3571896324142744806, guid: d9fa17295a15102438c6794af54c3a75, type: 3}
-      propertyPath: m_episode
-      value: 
-      objectReference: {fileID: 11400000, guid: 41b515a92040a6a4bbe13c037f1c87d6, type: 2}
     - target: {fileID: 6466193602623005880, guid: d9fa17295a15102438c6794af54c3a75, type: 3}
       propertyPath: m_Name
       value: Level 2_2
@@ -1298,10 +1305,6 @@ PrefabInstance:
       propertyPath: rootLevel
       value: 
       objectReference: {fileID: 1386027470}
-    - target: {fileID: 7486279164139594391, guid: d9fa17295a15102438c6794af54c3a75, type: 3}
-      propertyPath: needPoints
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1384,6 +1387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level 1_2
       objectReference: {fileID: 0}
+    - target: {fileID: 7486279164139594391, guid: d9fa17295a15102438c6794af54c3a75, type: 3}
+      propertyPath: pointText
+      value: 
+      objectReference: {fileID: 1967674630}
     - target: {fileID: 7486279164139594391, guid: d9fa17295a15102438c6794af54c3a75, type: 3}
       propertyPath: rootLevel
       value: 

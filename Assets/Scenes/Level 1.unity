@@ -823,10 +823,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 132789658946083410, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363714705006388695, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902551073306492934, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4173476524682547922, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 5692327612547544565, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+      propertyPath: m_TowerBuyPrefab
+      value: 
+      objectReference: {fileID: 3644388794461880337, guid: b8ae3719324ad394986f1e17dbc080a0, type: 3}
+    - target: {fileID: 5692327612547544565, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+      propertyPath: m_TowerAssets.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692327612547544565, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+      propertyPath: m_TowerAssets.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 57833da210955624eb912a29e7def812, type: 2}
+    - target: {fileID: 5692327612547544565, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+      propertyPath: m_TowerAssets.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 52dcf69d0f8128644a6631803aa09e23, type: 2}
+    - target: {fileID: 5692327612547544565, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+      propertyPath: m_TowerAssets.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 71f595f32c94a9342839c80262b555b8, type: 2}
     - target: {fileID: 6221037509452769254, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -952,7 +984,10 @@ PrefabInstance:
       value: TowerDefense.NextWaveGUI, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 132789658946083410, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+    - {fileID: 2363714705006388695, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+    - {fileID: 3902551073306492934, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8482839792427390391, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
@@ -976,7 +1011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30e1d2bcb3e3d8438fd706d5f3f38c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonusAmount: {fileID: 732795892}
+  m_BonusAmount: {fileID: 732795892}
 --- !u!1 &841761536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,11 +1794,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded467403d6ed524493a4eafe57c3ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EmenyPrefabs: {fileID: 5358793149406670873, guid: 93066af3fa3e54149a17b3ca05e77860, type: 3}
-  paths:
-  - {fileID: 1402763205}
+  m_EnemyPrefabs: {fileID: 5358793149406670873, guid: 93066af3fa3e54149a17b3ca05e77860, type: 3}
+  m_Paths:
   - {fileID: 1124585446}
-  currentWave: {fileID: 912242013}
+  - {fileID: 1402763205}
+  m_CurrentWave: {fileID: 912242013}
 --- !u!1 &1970998383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,7 +2013,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035700143}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d5c389067121d84c8d19252d25fb60e, type: 3}
   m_Name: 
