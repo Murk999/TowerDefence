@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115310378661480488776daa2a843b6d, type: 3}
   m_Name: StoneTower
   m_EditorClassIdentifier: 
-  goldCost: 15
+  goldCost: 30
   sprite: {fileID: 21300000, guid: 961542bf834d173448be6e9b235a3b66, type: 3}
   GUISprite: {fileID: 21300000, guid: b3bb45350dd912e4fa4347e45fe340c9, type: 3}
   TurretProperties: {fileID: 11400000, guid: 9878c5bdf1a4d55408393207e8b01743, type: 2}
+  requiedUpgrade: {fileID: 11400000, guid: 0736ffc586e98eb438e00a3656c66640, type: 2}
+  requiedUpgradeLevel: 2
+  m_UpgradesTo: []

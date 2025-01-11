@@ -10,5 +10,10 @@ namespace TowerDefense
         public Sprite sprite; // спрайт самой башни
         public Sprite GUISprite; // выбор спрайта интерфейса 
         public TurretProperties TurretProperties;
+        [SerializeField] private UpgradeAsset requiedUpgrade;
+        [SerializeField] private int requiedUpgradeLevel;
+        public bool IsAvailable() => !requiedUpgrade
+            || requiedUpgradeLevel <= Upgrades.GetUpgradeLevel(requiedUpgrade);
+        public TowerAsset[] m_UpgradesTo;
     }
 }
