@@ -7,7 +7,7 @@ namespace TowerDefense
 {
     public class TextUpdate : MonoBehaviour
     {
-        public enum UpdateSourse { Gold, Life }
+        public enum UpdateSourse { Gold, Life, Mana }
         public UpdateSourse sourse = UpdateSourse.Gold;
         private Text m_text;
 
@@ -17,10 +17,13 @@ namespace TowerDefense
             switch (sourse)
             {
                 case UpdateSourse.Gold:
-                    TDPlayer.Instance.GoldUbdateSubsctibe(UpdateText);
+                    TDPlayer.Instance.GoldUpdateSubsctibe(UpdateText);
                     break;
                 case UpdateSourse.Life: 
-                    TDPlayer.Instance.LifeUbdateSubsctibe (UpdateText);
+                    TDPlayer.Instance.LifeUpdatesSubsctibe (UpdateText);
+                    break;
+                case UpdateSourse.Mana: // !!!!
+                    TDPlayer.Instance.ManaUpdateSubsctibe(UpdateText);
                     break;
             }
         }

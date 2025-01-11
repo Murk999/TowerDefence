@@ -15,7 +15,7 @@ namespace TowerDefense
             }
         }
         private event Action<int> OnGoldUpdate;
-        public void GoldUbdateSubsctibe(Action<int> act)
+        public void GoldUpdateSubsctibe(Action<int> act)
         {
             OnGoldUpdate += act;
             act(Instance.m_gold);
@@ -23,16 +23,23 @@ namespace TowerDefense
         /*
          // добавили с ментором 
         // добавим метод отписки для gold  
-        public static void GoldUbdateUnsubsctibe(Action<int> act)
+        public static void GoldUpdateUnsubsctibe(Action<int> act)
         {
             OnGoldUpdate -= act;
         }
         */
         public event Action<int> OnLifeUpdate;
-        public  void LifeUbdateSubsctibe(Action<int> act)
+        public  void LifeUpdatesSubsctibe(Action<int> act)
         {
             OnLifeUpdate += act;
             act(Instance.NumLives);
+        }
+
+        private event Action<int> OnManaUpdate;
+        public void ManaUpdateSubsctibe(Action<int> act)
+        {
+            OnManaUpdate += act;
+            act(Instance.m_Mana);
         }
         /*
           // добавили с ментором 
@@ -44,7 +51,8 @@ namespace TowerDefense
 
         */
         [SerializeField] private int m_gold = 0;
-
+        [SerializeField] private int m_Mana = 0;
+        public int Mana => m_Mana;
         public void ChangeGold(int change)
         {
             m_gold += change;
@@ -56,7 +64,11 @@ namespace TowerDefense
             TakeDamage(change);
             OnLifeUpdate(NumLives);
         }
-
+        public void ChangeMana(int change)
+        {
+            m_Mana += change;
+            OnManaUpdate(m_Mana);
+        }
         //TODO: верим в то что золота на постройку достаточно
         [SerializeField] private Tower m_towerPrefab;
 

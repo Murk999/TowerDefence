@@ -21,7 +21,7 @@ namespace TowerDefense
 
         private void Start()
         {
-            TDPlayer.Instance.GoldUbdateSubsctibe(GoldStatusCheck); // проверяем есть ли у нас нужное количество монет
+            TDPlayer.Instance.GoldUpdateSubsctibe(GoldStatusCheck); // проверяем есть ли у нас нужное количество монет
             
             m_text.text = m_TowerAsset.goldCost.ToString();
             m_button.GetComponent<Image>().sprite = m_TowerAsset.GUISprite;

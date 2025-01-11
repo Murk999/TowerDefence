@@ -14,8 +14,34 @@ namespace TowerDefense
             [SerializeField] private int m_Cost = 5;
             [SerializeField] private int m_Damage = 2;
             [SerializeField] private Color m_TargetingColor;
+            [SerializeField] private UpgradeAsset requiredUpgrade;
+            [SerializeField] private Button m_UseFireButton;
+
+            public void CheckAbility(int mana)
+            {
+                m_UseFireButton.interactable = mana >= m_Cost; //&& CanUse();
+                Debug.Log(m_Cost);
+            }
+
+            //public bool CanUse() // Проверка, доступно ли умение
+            //{
+              //  return Upgrades.GetUpgradeLevel(requiredUpgrade) > 0;
+                
+            //}
+           
             public void Use() 
             {
+                //!!
+                //if (!CanUse()) return;
+                
+                CheckAbility(TDPlayer.Instance.Mana);
+                Debug.Log(m_Cost);
+                if (TDPlayer.Instance.Mana >= m_Cost)
+                {
+                    TDPlayer.Instance.ChangeMana(-m_Cost);
+                }
+                //!!
+                
                 ClickProtection.Instance.Activate((Vector2 v) =>
                 {
                     Vector3 position = v;
@@ -30,7 +56,7 @@ namespace TowerDefense
                         }
                     }
                 });
-                
+                Debug.Log(m_Cost + "final");
             } 
         }
         
@@ -40,8 +66,29 @@ namespace TowerDefense
             [SerializeField] private int m_Cost = 10;
             [SerializeField] private float m_Cooldown = 15f;
             [SerializeField] private float m_Duration = 5;
+            [SerializeField] private UpgradeAsset requiredUpgrade;
+            [SerializeField] private Button m_UseSlowButton;
+
+            public void CheckAbility(int money)
+            {
+                m_UseSlowButton.interactable = money >= m_Cost && CanUse();
+            }
+            public bool CanUse() // Проверка, доступно ли умение
+            {
+                return Upgrades.GetUpgradeLevel(requiredUpgrade) > 0;
+            }
+
             public void Use() 
             {
+
+                if (!CanUse()) return;
+                if (TDPlayer.Instance.Mana >= m_Cost)
+                {
+                    TDPlayer.Instance.ChangeMana(-m_Cost);
+                }
+
+
+
                 Debug.Log("Time used");
                 void Slow(Enemy ship)
                 {
@@ -75,11 +122,19 @@ namespace TowerDefense
         }
         [SerializeField] private Button m_TimeButton;
         [SerializeField] private Image m_TargetCircle;
-
         [SerializeField] private FireAbility m_FireAbility;
+        
         public void UseFireAbility() => m_FireAbility.Use();
         [SerializeField] private TimeAbility m_TimeAbility;
         public void UseTimeAbility() => m_TimeAbility.Use();
+
+        public void UseFireCheckAbility() => m_FireAbility.CheckAbility(TDPlayer.Instance.Mana);
+        public void UseSlowCheckAbility() => m_TimeAbility.CheckAbility(TDPlayer.Instance.Mana);
+        private void Start()
+        {
+            UseFireCheckAbility();
+            UseSlowCheckAbility();
+        }
 
         private void InitiateTargeting(Color color, Action<Vector2>mouseAction)
         {
