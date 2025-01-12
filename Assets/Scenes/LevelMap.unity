@@ -465,7 +465,7 @@ MonoBehaviour:
   - asset: {fileID: 11400000, guid: 0736ffc586e98eb438e00a3656c66640, type: 2}
     level: 0
   - asset: {fileID: 11400000, guid: d308b6e86689b6442afc8c2c88ee37c8, type: 2}
-    level: 1
+    level: 0
 --- !u!1001 &446324085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1516,6 +1516,10 @@ PrefabInstance:
       propertyPath: rootLevel
       value: 
       objectReference: {fileID: 5252249989879069714}
+    - target: {fileID: 7486279164139594391, guid: d9fa17295a15102438c6794af54c3a75, type: 3}
+      propertyPath: needPoints
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 368530346381794596, guid: d9fa17295a15102438c6794af54c3a75, type: 3}

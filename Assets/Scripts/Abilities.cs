@@ -14,33 +14,35 @@ namespace TowerDefense
             [SerializeField] private int m_Cost = 5;
             [SerializeField] private int m_Damage = 2;
             [SerializeField] private Color m_TargetingColor;
-            [SerializeField] private UpgradeAsset requiredUpgrade;
+            [SerializeField] private UpgradeAsset AbilityUpgrade;
             [SerializeField] private Button m_UseFireButton;
 
             public void CheckAbility(int mana)
             {
-                m_UseFireButton.interactable = mana >= m_Cost; //&& CanUse();
-                Debug.Log(m_Cost);
+                m_UseFireButton.interactable = mana >= m_Cost;
             }
-
-            //public bool CanUse() // Проверка, доступно ли умение
-            //{
-              //  return Upgrades.GetUpgradeLevel(requiredUpgrade) > 0;
+            public void ApplyingUpgrades()
+            {
+                var level = Upgrades.GetUpgradeLevel(AbilityUpgrade);
+                m_Damage += level * 10;
+                Debug.Log(level);
+                Debug.Log(m_Damage);
+            }
+            
+            public bool CanUse() // Проверка, доступно ли умение
+            {
+                return Upgrades.GetUpgradeLevel(AbilityUpgrade) > 0;
                 
-            //}
-           
+            }
             public void Use() 
             {
-                //!!
-                //if (!CanUse()) return;
-                
+                if (!CanUse())  return;
                 CheckAbility(TDPlayer.Instance.Mana);
-                Debug.Log(m_Cost);
+                
                 if (TDPlayer.Instance.Mana >= m_Cost)
                 {
                     TDPlayer.Instance.ChangeMana(-m_Cost);
                 }
-                //!!
                 
                 ClickProtection.Instance.Activate((Vector2 v) =>
                 {
@@ -55,9 +57,8 @@ namespace TowerDefense
                             enemy.TakeDamage(m_Damage, TDProjectile.DamageType.Magic);
                         }
                     }
-                });
-                Debug.Log(m_Cost + "final");
-            } 
+                }); 
+            }
         }
         
         [Serializable]
@@ -66,36 +67,26 @@ namespace TowerDefense
             [SerializeField] private int m_Cost = 10;
             [SerializeField] private float m_Cooldown = 15f;
             [SerializeField] private float m_Duration = 5;
-            [SerializeField] private UpgradeAsset requiredUpgrade;
+            [SerializeField] private UpgradeAsset AbilityUpgrade;
             [SerializeField] private Button m_UseSlowButton;
 
             public void CheckAbility(int money)
             {
-                m_UseSlowButton.interactable = money >= m_Cost && CanUse();
+                m_UseSlowButton.interactable = money >= m_Cost;
             }
             public bool CanUse() // Проверка, доступно ли умение
             {
-                return Upgrades.GetUpgradeLevel(requiredUpgrade) > 0;
+                return Upgrades.GetUpgradeLevel(AbilityUpgrade) > 0;
+                
             }
-
             public void Use() 
             {
-
                 if (!CanUse()) return;
-                if (TDPlayer.Instance.Mana >= m_Cost)
-                {
-                    TDPlayer.Instance.ChangeMana(-m_Cost);
-                }
-
-
-
-                Debug.Log("Time used");
                 void Slow(Enemy ship)
                 {
-                    print($"{ship.name} is slowed");
                     ship.GetComponent<SpaceShip>().HalfMaxLinearVelocity();
                 }
-                print("Everyon slowed");
+
                 foreach (var ship in FindObjectsOfType<SpaceShip>())
                     ship.HalfMaxLinearVelocity();
 
@@ -103,9 +94,8 @@ namespace TowerDefense
 
                 IEnumerator Restore()
                 {
-                    Debug.Log("Restore scheduled");
                     yield return new WaitForSeconds(m_Duration);
-                    print("All restored");
+
                     foreach (var ship in FindObjectsOfType<SpaceShip>())
                         ship.RestoreMaxLinearVelocity();
                     EnemyWaveManager.OnEnemySpawn -= Slow;
@@ -133,9 +123,11 @@ namespace TowerDefense
         private void Start()
         {
             UseFireCheckAbility();
+            m_FireAbility.ApplyingUpgrades();
             UseSlowCheckAbility();
-        }
 
+        }
+        
         private void InitiateTargeting(Color color, Action<Vector2>mouseAction)
         {
             //m_TargetCircle.color = color;

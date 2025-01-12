@@ -913,6 +913,18 @@ PrefabInstance:
       propertyPath: m_TargetCircle
       value: 
       objectReference: {fileID: 1984478754}
+    - target: {fileID: 7130335294378421174, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+      propertyPath: m_FireAbility.m_Damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130335294378421174, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+      propertyPath: m_FireAbility.AbilityUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: d308b6e86689b6442afc8c2c88ee37c8, type: 2}
+    - target: {fileID: 7130335294378421174, guid: 142c1e7c0715c9544a369bffc98e26e2, type: 3}
+      propertyPath: m_TimeAbility.AbilityUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: d308b6e86689b6442afc8c2c88ee37c8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1066,6 +1078,8 @@ MonoBehaviour:
     level: 0
   - asset: {fileID: 11400000, guid: 0736ffc586e98eb438e00a3656c66640, type: 2}
     level: 2
+  - asset: {fileID: 11400000, guid: d308b6e86689b6442afc8c2c88ee37c8, type: 2}
+    level: 6
 --- !u!1 &912242012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,7 +2041,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035700143}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d5c389067121d84c8d19252d25fb60e, type: 3}
   m_Name: 
