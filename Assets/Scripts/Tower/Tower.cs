@@ -6,8 +6,9 @@ namespace TowerDefense
     public class Tower : MonoBehaviour
     {
         [SerializeField] private float m_Radius = 2.2f;
+        [SerializeField] private float m_Lead = 1f;
         private Turret[] turrets;
-        private Destructible target = null;
+        private Rigidbody2D target = null;
 
         public void Use(TowerAsset asset)
         {
@@ -32,12 +33,12 @@ namespace TowerDefense
         {
             if (target)
             {
-                Vector2 targetVector = target.transform.position - transform.position;
-                if (targetVector.magnitude <= m_Radius)
+                //Vector2 targetVector = target.transform.position - transform.position;
+                if (Vector3.Distance(target.transform.position, transform.position) <= m_Radius)
                 {
                     foreach (var turret in turrets)
                     {
-                        turret.transform.up = targetVector;
+                        turret.transform.up = target.transform.position - turret.transform.position + (Vector3)target.velocity * m_Lead;
                         turret.Fire();
                     }
                 }
@@ -51,7 +52,7 @@ namespace TowerDefense
                 var enter = Physics2D.OverlapCircle(transform.position, m_Radius);
                 if (enter)
                 {
-                    target = enter.transform.root.GetComponent<Destructible>();
+                    target = enter.transform.root.GetComponent<Rigidbody2D>();
                 }
             }
         }

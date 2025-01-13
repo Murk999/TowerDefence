@@ -66,7 +66,7 @@ namespace TowerDefense
                     obj.enabled = false;
                 }
             }
-            DisableAll<Spawner>();
+            DisableAll<EnemyWave>();
             DisableAll<Projectile>();
             DisableAll<Tower>();
             DisableAll<NextWaveGUI>();

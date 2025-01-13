@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Radius: 2.2
+  m_Lead: 0.3
   turretUpgrade: {fileID: 11400000, guid: 0736ffc586e98eb438e00a3656c66640, type: 2}
 --- !u!1 &5288327810228361084
 GameObject:
