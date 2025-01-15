@@ -1,7 +1,9 @@
 using SpaceShooter;
 using System;
 using UnityEngine;
-
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 namespace TowerDefense
 {
     [RequireComponent(typeof(Destructible))]
@@ -69,12 +71,28 @@ namespace TowerDefense
         public void GivePlayerGold()
         {
             TDPlayer.Instance.ChangeGold(m_gold); // говорим игроку достань скрипт плейер и представь его в виде
-                                                              // тдѕлейер и назначь ему золото
+                                                  // тдѕлейер и назначь ему золото
         }
-        public void TakeDamage(int damage, TDProjectile.DamageType damageType) 
+        public void TakeDamage(int damage, TDProjectile.DamageType damageType)
         {
             m_Destructible.ApplyDamage(ArmorDamageFunctions[(int)m_ArmorType](damage, damageType, m_armor));// получать повреждение но поврежедние будет расчитыватьс€ по функции брони
-                                                                                                       // функци€ будет хранитьс€ в масиве к которому будем иметь доступ через армортайп 
+                                                                                                            // функци€ будет хранитьс€ в масиве к которому будем иметь доступ через армортайп 
         }
+
+#if UNITY_EDITOR
+        [CustomEditor(typeof(Enemy))]
+        public class EnemyInspector : Editor
+        {
+            public override void OnInspectorGUI()
+            {
+                base.OnHeaderGUI();
+                EnemyAsset a = EditorGUILayout.ObjectField(null, typeof(EnemyAsset), false) as EnemyAsset;
+                if (a)
+                {
+                    (target as Enemy).Use(a);
+                }
+            }
+        }
+        #endif
     }
 }

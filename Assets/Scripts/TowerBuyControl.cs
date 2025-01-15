@@ -30,7 +30,7 @@ namespace TowerDefense
         {
             // добавляем проверку на существование m_button
             if (!m_button) return;
-            if (gold > m_TowerAsset.goldCost != m_button.interactable)
+            if (gold >= m_TowerAsset.goldCost != m_button.interactable)
             {
                 m_button.interactable = !m_button.interactable;
                 m_text.color = m_button.interactable ? Color.white : Color.red;

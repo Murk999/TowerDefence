@@ -1,8 +1,8 @@
-﻿using System;
-using UnityEngine;
-using UnityEditor;
-using SpaceShooter;
+﻿using UnityEngine;
 using TowerDefense;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 namespace SpaceShooter
 {
     /// <summary>
@@ -110,9 +110,11 @@ namespace SpaceShooter
             m_Parent = parent;
         }
     }
+}
+    #if UNITY_EDITOR
     namespace TowerDefense
     {
-        [CustomEditor(typeof(Projectile))]
+        [CustomEditor(typeof(SpaceShooter.Projectile))]
         public class ProjectileInspector : Editor
         {
             public override void OnInspectorGUI()
@@ -120,12 +122,13 @@ namespace SpaceShooter
                 base.OnInspectorGUI();
                 if (GUILayout.Button("Create TD Projectile"))
                 {
-                    var target = this.target as Projectile;
+                    var target = this.target as SpaceShooter.Projectile;
                     var tdProj = target.gameObject.AddComponent<TDProjectile>();
                     tdProj.SetFromOtherProjectile(target);
                 }
             }
         }
     } 
-}
+#endif
+
 

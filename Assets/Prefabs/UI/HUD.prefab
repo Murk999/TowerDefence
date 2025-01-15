@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1877175929725343555}
   - component: {fileID: 7358204737608668858}
   - component: {fileID: 4841713077383132174}
+  - component: {fileID: 322746356384145883}
   m_Layer: 5
   m_Name: win
   m_TagString: Untagged
@@ -76,6 +77,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &322746356384145883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730306750143306378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f44005e58e61b7e469d05b7d9e618f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Sound: 3
 --- !u!1 &734073656362308895
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,6 +838,7 @@ GameObject:
   - component: {fileID: 4310145014115595026}
   - component: {fileID: 3100695730127055019}
   - component: {fileID: 2311900914548850130}
+  - component: {fileID: 3970966060442315}
   m_Layer: 5
   m_Name: Lose
   m_TagString: Untagged
@@ -889,6 +904,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3970966060442315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2395166072510414523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f44005e58e61b7e469d05b7d9e618f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Sound: 5
 --- !u!1 &2678499814949375105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2456,7 +2484,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1231
+  m_Text: '10
+
+'
 --- !u!1 &7716044007265867421
 GameObject:
   m_ObjectHideFlags: 0
@@ -3038,7 +3068,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1231
+  m_Text: '10
+
+'
 --- !u!1 &8662848301098331779
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,18 +3216,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DoNotDestroyOnLoad: 0
   m_TimeButton: {fileID: 1692096552267954061}
-  m_TargetCircle: {fileID: 0}
+  m_TargetCircle: {fileID: 526082032586793401}
   m_FireAbility:
     m_Cost: 10
-    m_Damage: 25
+    m_Damage: 10
     m_TargetingColor: {r: 0, g: 0, b: 0, a: 0}
-    requiredUpgrade: {fileID: 11400000, guid: d308b6e86689b6442afc8c2c88ee37c8, type: 2}
+    AbilityUpgrade: {fileID: 11400000, guid: d308b6e86689b6442afc8c2c88ee37c8, type: 2}
     m_UseFireButton: {fileID: 4903315462214349231}
   m_TimeAbility:
     m_Cost: 10
-    m_Cooldown: 15
-    m_Duration: 5
-    requiredUpgrade: {fileID: 11400000, guid: d308b6e86689b6442afc8c2c88ee37c8, type: 2}
+    m_Cooldown: 5
+    m_Duration: 20
+    AbilityUpgrade: {fileID: 11400000, guid: d308b6e86689b6442afc8c2c88ee37c8, type: 2}
     m_UseSlowButton: {fileID: 1692096552267954061}
 --- !u!1 &8944391071164450422
 GameObject:

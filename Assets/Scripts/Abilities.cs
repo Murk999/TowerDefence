@@ -3,6 +3,7 @@ using System;
 using SpaceShooter;
 using System.Collections;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 namespace TowerDefense
 {
@@ -20,6 +21,10 @@ namespace TowerDefense
             public void CheckAbility(int mana)
             {
                 m_UseFireButton.interactable = mana >= m_Cost;
+                if (mana < m_Cost || Upgrades.GetUpgradeLevel(AbilityUpgrade) == 0)
+                {
+                    m_UseFireButton.interactable = false;
+                }
             }
             public void ApplyingUpgrades()
             {
@@ -31,12 +36,12 @@ namespace TowerDefense
             
             public bool CanUse() // Проверка, доступно ли умение
             {
-                return Upgrades.GetUpgradeLevel(AbilityUpgrade) > 0;
-                
+                return Upgrades.GetUpgradeLevel(AbilityUpgrade) > 0;   
             }
             public void Use() 
             {
                 if (!CanUse())  return;
+
                 CheckAbility(TDPlayer.Instance.Mana);
                 
                 if (TDPlayer.Instance.Mana >= m_Cost)
@@ -67,21 +72,35 @@ namespace TowerDefense
             [SerializeField] private int m_Cost = 10;
             [SerializeField] private float m_Cooldown = 15f;
             [SerializeField] private float m_Duration = 5;
-            [SerializeField] private UpgradeAsset AbilityUpgrade;
+            //[SerializeField] private UpgradeAsset AbilityUpgrade;
             [SerializeField] private Button m_UseSlowButton;
-
-            public void CheckAbility(int money)
+            
+            
+            public void CheckAbility(int mana)
             {
-                m_UseSlowButton.interactable = money >= m_Cost;
+                m_UseSlowButton.interactable = mana >= m_Cost;
+                if (mana < m_Cost)
+                {
+                    m_UseSlowButton.interactable = false;
+                } 
             }
+            /*
             public bool CanUse() // Проверка, доступно ли умение
             {
-                return Upgrades.GetUpgradeLevel(AbilityUpgrade) > 0;
-                
+                return Upgrades.GetUpgradeLevel(AbilityUpgrade) > 0; 
             }
+            */
             public void Use() 
             {
-                if (!CanUse()) return;
+                //if (!CanUse()) return;
+                
+                CheckAbility(TDPlayer.Instance.Mana);
+                
+                if (TDPlayer.Instance.Mana >= m_Cost)
+                {
+                    TDPlayer.Instance.ChangeMana(-m_Cost);
+                }
+
                 void Slow(Enemy ship)
                 {
                     ship.GetComponent<SpaceShip>().HalfMaxLinearVelocity();
@@ -105,27 +124,39 @@ namespace TowerDefense
                 {
                     Instance.m_TimeButton.interactable = false;
                     yield return new WaitForSeconds(m_Cooldown);
-                    Instance.m_TimeButton.interactable = true;
+                    if (TDPlayer.Instance.Mana < m_Cost)
+                    {
+                        Instance.m_TimeButton.interactable = false;
+                    }
+                    else
+                    {
+                        Instance.m_TimeButton.interactable = true;
+                    }
                 }
                 Instance.StartCoroutine(TimeAbilityButton());
             }
         }
-        [SerializeField] private Button m_TimeButton;
+        [SerializeField] public Button m_TimeButton;
         [SerializeField] private Image m_TargetCircle;
-        [SerializeField] private FireAbility m_FireAbility;
         
+        [SerializeField] private FireAbility m_FireAbility;
         public void UseFireAbility() => m_FireAbility.Use();
+        
         [SerializeField] private TimeAbility m_TimeAbility;
         public void UseTimeAbility() => m_TimeAbility.Use();
 
         public void UseFireCheckAbility() => m_FireAbility.CheckAbility(TDPlayer.Instance.Mana);
         public void UseSlowCheckAbility() => m_TimeAbility.CheckAbility(TDPlayer.Instance.Mana);
+        
         private void Start()
         {
             UseFireCheckAbility();
             m_FireAbility.ApplyingUpgrades();
             UseSlowCheckAbility();
-
+        }  
+        private void Update()
+        {
+            m_FireAbility.CheckAbility(TDPlayer.Instance.Mana);
         }
         
         private void InitiateTargeting(Color color, Action<Vector2>mouseAction)
