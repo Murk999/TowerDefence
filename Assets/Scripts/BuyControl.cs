@@ -29,14 +29,13 @@ namespace TowerDefense
             if (buildSite)
             {
                 var position = Camera.main.WorldToScreenPoint(buildSite.transform.root.position);
-                print(position);
                 m_RectTransform.anchoredPosition = position;
                 
                 m_ActiveControl = new List<TowerBuyControl>();
                 foreach (var asset in buildSite.buildableTowers)
                 {
                     if (asset.IsAvailable())
-                    {  // ???? не работает постройка летят ошибки
+                    {  
                         var newControl = Instantiate(m_TowerBuyPrefab, transform);
                         m_ActiveControl.Add(newControl);
                         newControl.SetTowerAsset(asset);

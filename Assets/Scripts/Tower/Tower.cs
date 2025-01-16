@@ -26,7 +26,7 @@ namespace TowerDefense
         {
             var level = Upgrades.GetUpgradeLevel(turretUpgrade);
             m_Radius += level * 2f;
-            print(m_Radius);
+            
         }
 
         private void Update()

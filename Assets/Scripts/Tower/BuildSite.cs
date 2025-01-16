@@ -26,7 +26,6 @@ namespace TowerDefense
         }
         public virtual void OnPointerDown(PointerEventData eventData)
         {
-            print(name);
             OnClickEvent(this);
         }
     }

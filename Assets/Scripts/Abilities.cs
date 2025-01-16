@@ -30,8 +30,6 @@ namespace TowerDefense
             {
                 var level = Upgrades.GetUpgradeLevel(AbilityUpgrade);
                 m_Damage += level * 10;
-                Debug.Log(level);
-                Debug.Log(m_Damage);
             }
             
             public bool CanUse() // Проверка, доступно ли умение
